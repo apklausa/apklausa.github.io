@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <script>
+        // List of URLs
+        var urls = [
+            'https://cdn.discordapp.com/attachments/1191492123678228483/1191492243907952670/0f6265fe8dc448b8f032f161db77c033.jpg?ex=65a5a29f&is=65932d9f&hm=84260fc2637d6a246fb4e208d4cb9c421074bd7e6f7d82ae3b450cb01dcda6ea&',
+            'https://cdn.discordapp.com/attachments/1191492123678228483/1191492250371371028/ad4a0ee31129c05fc4ffaae6e0f02f4b.jpg?ex=65a5a2a1&is=65932da1&hm=970a8815374696d0e5952382314e7fc0a26a7ee841b7f2c344d3dc64a8271548&',
+            'https://cdn.discordapp.com/attachments/1191492123678228483/1191492260752281741/d8a6c3a4abdd2935828d078c06a61655.jpg?ex=65a5a2a3&is=65932da3&hm=29ea285645cb86980b084881d0bfe5ec2983215942d093710f666066213117b2&',
+            'https://cdn.discordapp.com/attachments/1191492123678228483/1191492269279297728/2c947bcaf6ca4b1c37f44f9cff180d01.jpg?ex=65a5a2a5&is=65932da5&hm=f50fefdc7077bca104a8a851be2e31abb2b0961ff6cb9274ac071a2e056521ed&'
+        ];
+
+        // Function to redirect sequentially in a loop
+        function sequentialRedirect() {
+            // Retrieve the current index from local storage or set it to 0 if not present
+            var currentIndex = parseInt(localStorage.getItem('redirectIndex')) || 0;
+
+            // Redirect to the current index URL
+            window.location.href = urls[currentIndex];
+
+            // Update the index for the next person
+            currentIndex = (currentIndex + 1) % urls.length;
+
+            // Store the updated index in local storage
+            localStorage.setItem('redirectIndex', currentIndex.toString());
+        }
+
+        // Call the function on page load
+        sequentialRedirect();
+    </script>
+</body>
+</html>
